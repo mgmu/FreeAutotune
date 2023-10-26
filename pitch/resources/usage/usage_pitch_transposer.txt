@@ -1,0 +1,11 @@
+
+-------------------------- Pitch transposer v1.0 ---------------------------
+Usage: cargo run --bin pitch_transposer -- algo in shift [fsize sframes]
+  - a:   the selected algorithm, 0 for phase vocoder, 1 for basic transposer
+  - in:  the path to the .wav file to transform.
+  - s:   the scale factor, a real number strictly superior to 0. In order to
+         shift by semitons, use this formula s = 2^(semitons / 12).
+  - fs:  the frame size to use, mandatory for the phase vocoder (a=0).
+  - sf:  the shift between frames, mandatory for the phase vocoder (a=0).
+  
+Output files are stored in `resources/outputs/`.

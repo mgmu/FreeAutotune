@@ -1,0 +1,136 @@
+* Etude 1
+  Commit [43dfe4c38f]
+
+  Procédure suivie:
+  - Jouer le .wav avec le lecteur par défaut ubuntu en haut parleur.
+  - Analyser le son sortant des hauts parleurs avec un téléphone sur 
+    l'application Spectroid.
+  - Génération des spectrogrammes avec SoX.
+
+  Paramètres:
+  - taille de frame: 1024
+  - hopa (écart entre début de frame): 256
+  - son transposé: `mono_16PCM_440hz_44000sps.wav`
+
+  Transpositions générées avec le script `transpose_all.sh`.
+  Spectrogrammes générés avec le script `gen_spectrogram.sh`.
+
+  | shift | dB          | Hz           | Hz attendue |
+  |-------+-------------+--------------+-------------|
+  |   -12 | ND          | ND           |         220 |
+  |   -11 | ND          | ND           |     233.081 |
+  |   -10 | ND          | ND           |     246.941 |
+  |    -9 | -62         | 345          |     261.625 |
+  |    -8 | -60         | 345          |     277.182 |
+  |    -7 | -46         | 345          |     293.664 |
+  |    -6 | -46         | 345          |     311.126 |
+  |    -5 | -49         | 345          |     329.627 |
+  |    -4 | -43         | 345          |     349.228 |
+  |    -3 | -39         | 345          |     369.994 |
+  |    -2 | -46/-63     | 345/517      |     391.995 |
+  |    -1 | -70         | 345/431      |     415.304 |
+  |     0 | -47/-38     | 345/517      |         440 |
+  |     1 | -80         | 345          |     466.163 |
+  |     2 | -70         | 517          |     493.883 |
+  |     3 | -80         | 345          |     523.251 |
+  |     4 | -56/-66     | 517/689      |     554.365 |
+  |     5 | -70/-54     | 517/689      |     587.329 |
+  |     6 | -74/-53     | 517/689      |     622.253 |
+  |     7 | -61/-64     | 517/689      |     659.255 |
+  |     8 | -57/-63     | 689/861      |     698.456 |
+  |     9 | -80/-73     | 689/861      |     739.988 |
+  |    10 | -59/-45/-55 | 689/861/1034 |     783.990 |
+  |    11 | -67/-49/-53 | 689/861/1034 |     830.609 |
+  |    12 | -55/-38/-34 | 689/861/1034 |         880 |
+
+* Etude 2
+  Commit [aff2f74670f]
+
+  Procédure suivie: identique Etude 1
+  
+  Paramètres:
+  - taille de frame: 1024
+  - hopa (écart entre début de frame): 256
+  - son transposé: `mono_16PCM_440hz_8000sps.wav`
+
+  Transpositions générées avec le script `transpose_all.sh`.
+  Spectrogrammes générés avec le script `gen_spectrogram.sh`.
+
+  | shift | dB            | Hz       | Hz attendue |
+  |-------+---------------+----------+-------------|
+  |   -12 | -45/-53       | 218/3790 |         220 |
+  |   -11 | *             | *        |     233.081 |
+  |   -10 | *             | *        |     246.941 |
+  |    -9 | -60/-70       | 250/270  |     261.625 |
+  |    -8 | -33/-53       | 283/3230 |     277.182 |
+  |    -7 | -55/-76       | 280/2929 |     293.664 |
+  |    -6 | -47/-70       | 312/345  |     311.126 |
+  |    -5 | -47/-46       | 312/345  |     329.627 |
+  |    -4 | -31/-64       | 345/2000 |     349.228 |
+  |    -3 | -36/-60       | 377/345  |     369.994 |
+  |    -2 | -40/-44       | 377/404  |     391.995 |
+  |    -1 | -55/-63       | 404/436  |     415.304 |
+  |     0 | -33/-77       | 436/463  |         440 |
+  |     1 | *             | *        |     466.163 |
+  |     2 | -34/-50       | 501/468  |     493.883 |
+  |     3 | -64/-75       | 517/533  |     523.251 |
+  |     4 | -43/-47       | 533/560  |     554.365 |
+  |     5 | -60/-46       | 560/592  |     587.329 |
+  |     6 | -60/-53       | 592/624  |     622.253 |
+  |     7 | -50/-30       | 624/657  |     659.255 |
+  |     8 | -44/-35       | 689/721  |     698.456 |
+  |     9 | -47/-60<->-80 | 754/786  |     739.988 |
+  |    10 | -29/-42       | 786/815  |     783.990 |
+  |    11 | -34/-30       | 807/840  |     830.609 |
+  |    12 | -25/-30       | 872/904  |         880 |
+
+  Un * signifie que les données n'ont pas pu être mesurées avec Spectroid, il 
+  faut étudier le spectrogramme. Dans certains cas, les spectrogrammes 
+  présentent un signal très faible, quasi inexistant.
+
+* Etude 3
+  Commit [a040b8ad]
+
+  *Fenêtrage modifié*
+
+  Procédure suivie: identique Etude 1
+  
+  Paramètres:
+  - taille de frame: 1024
+  - hopa (écart entre début de frame): 256
+  - son transposé: `mono_16PCM_440hz_8000sps.wav`
+
+  Transpositions générées avec le script `transpose_all.sh`.
+  Spectrogrammes générés avec le script `gen_spectrogram.sh`.
+
+  | shift |      dB |       Hz | Hz attendue |
+  |-------+---------+----------+-------------|
+  |   -12 | -40/-53 | 220/3797 |         220 |
+  |   -11 | -40/-52 | 230/3516 |     233.081 |
+  |   -10 | -40/-53 | 245/3281 |     246.941 |
+  |    -9 | -35/-54 | 261/2977 |     261.625 |
+  |    -8 | -34/-50 | 280/3234 |     277.182 |
+  |    -7 | -35/-52 | 293/2953 |     293.664 |
+  |    -6 | -30/-50 | 311/2648 |     311.126 |
+  |    -5 | -30/-51 | 328/1688 |     329.627 |
+  |    -4 | -30/-55 | 349/1992 |     349.228 |
+  |    -3 | -32/-49 | 369/1641 |     369.994 |
+  |    -2 | -30/-52 | 393/1266 |     391.995 |
+  |    -1 |     -33 |      416 |     415.304 |
+  |     0 |     -31 |      440 |         440 |
+  |     1 |     -30 |      463 |     466.163 |
+  |     2 |     -30 |      492 |     493.883 |
+  |     3 |     -30 |      527 |     523.251 |
+  |     4 | -30/-54 | 551/1523 |     554.365 |
+  |     5 |     -30 |      586 |     587.329 |
+  |     6 |     -30 |      627 |     622.253 |
+  |     7 |     -30 |      656 |     659.255 |
+  |     8 |     -30 |      709 |     698.456 |
+  |     9 |     -30 |      738 |     739.988 |
+  |    10 |     -30 |      785 |     783.990 |
+  |    11 |     -30 |      832 |     830.609 |
+  |    12 |     -30 |      879 |         880 |
+
+  Un * signifie que les données n'ont pas pu être mesurées avec Spectroid, il
+  faut étudier le spectrogramme. Les -30 en dB correspondent à la moyenne, les 
+  valeurs mésurées réelles varient entre -25 et -35.

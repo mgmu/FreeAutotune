@@ -1,0 +1,16 @@
+
+------------------------ Quality checker v1.0 ------------------------
+Usage: cargo run --bin quality_checker -- ps po th
+  - ps: the path to the signal to check
+  - po: the path to the "oracle" signal (i.e the reference)
+  - th: the threshold value of the distance between the oracle and the
+        signal (a float number that holds on 32 bits)
+
+The output is printed to standard output and it displays the following
+elements separated by a blank space: `ps po th c d`,  where ps po and
+th are the arguments provided to the binary and:
+   - c: 1 if the euclidian distance between the oracle and the signal
+        is inferior or equal to the threshold, 0 otherwise
+   - d: a real number representing the euclidian distance between the
+        oracle and the signal
+
