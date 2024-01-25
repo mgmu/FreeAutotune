@@ -34,3 +34,7 @@ Output files are stored in `resources/outputs/`.
 
 The output is printed to standard output and it displays the following
 elements separated by a blank space: `Good/Bad quality : euclidean distance`  
+
+# Credit
+Guillermo Morón Usón   
+Sevi Dervishi
